@@ -1,0 +1,83 @@
+{% extends "shared/layout.html" %}
+
+{% block content %}
+<h1 class="text-2xl text-gray-900 font-bold text-center">Add Product</h1>
+<form method="POST" action="/submit" enctype="multipart/form-data"
+    class="bg-white shadow-md w-auto rounded px-8 pt-6 pb-8 mb-4">
+
+    {{ form.csrf_token }}
+
+    <div class="mb-4">
+        {{ form.name.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+        {{ form.name(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+        focus:outline-none focus:shadow-outline" + (" border-red-500" if form.name.errors else "")) }}
+        {% if form.name.errors %}
+        <p class="text-red-500 text-xs italic">
+            {% for error in form.name.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="mb-4">
+        {{ form.description.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+        {{ form.description(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+        focus:outline-none focus:shadow-outline" + (" border-red-500" if form.description.errors else "")) }}
+        {% if form.description.errors %}
+        <p class="text-red-500 text-xs italic">
+            {% for error in form.description.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="mb-4">
+        {{ form.price.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+        {{ form.price(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+        focus:outline-none focus:shadow-outline" + (" border-red-500" if form.price.errors else "")) }}
+        {% if form.price.errors %}
+        <p class="text-red-500 text-xs italic">
+            {% for error in form.price.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="mb-6">
+        {{ form.qte.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+        {{ form.qte(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+        focus:outline-none focus:shadow-outline" + (" border-red-500" if form.qte.errors else "")) }}
+        {% if form.qte.errors %}
+        <p class="text-red-500 text-xs italic">
+            {% for error in form.qte.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="mb-6">
+        {{ form.image.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+        {{ form.image(class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+        focus:outline-none focus:shadow-outline" + (" border-red-500" if form.image.errors else "")) }}
+        {% if form.image.errors %}
+        <p class="text-red-500 text-xs italic">
+            {% for error in form.image.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+
+    <div class="flex items-center justify-between">
+        <button type="submit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            Submit
+        </button>
+    </div>
+</form>
+
+{% endblock %}
